@@ -22,6 +22,13 @@ class IdeaDetailView(DetailView):
     model = Idea
 
 
+class IdeaRandomView(View):
+    def get(self, request):
+        import random
+        idea = random.choice(list(Idea.objects.all()))
+        return render(request, 'ideas/idea_random.html', {'idea': idea})
+
+
 """
 class AddIdea(View):
     def get(self, request):
